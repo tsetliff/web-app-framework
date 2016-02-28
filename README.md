@@ -44,5 +44,8 @@ The put method then ensures that the person is logged in, validates the data, ge
 ## Installation With Composer
 Since composer is an easy way to pull in additional libraries you will need for your project I'm going to just explain how to install this project with composer.
 
+## Installing By Hand
+I recommend learning about all of the stuff composer has to offer as many libraries to make your life easier can be installed this way but if you still don't want composer these will be the setup instructions.
+
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
