@@ -1,0 +1,1 @@
+By default these templates will load with the PhpTemplateWrapper that is injected into the response object.

@@ -1,0 +1,3 @@
+I've created a component test directory that can be used sparingly in a project when you want to test that this project
+works with external systems.  This is typically not done in an automated fashion since you don't know the status
+of those other systems.

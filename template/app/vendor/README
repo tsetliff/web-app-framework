@@ -1,0 +1,2 @@
+Future home of composer classes.  If you do that make sure the autoloader one directory down calls the autoloader composer
+creates.

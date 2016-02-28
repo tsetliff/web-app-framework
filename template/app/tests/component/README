@@ -1,0 +1,2 @@
+I've created a component test directory that can be used sparingly in a project when you want to test that multiple
+components within your project work well together.
