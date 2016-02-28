@@ -37,7 +37,7 @@ The controller then returns a json encoded response indicating everything went w
 ## Changes to above flow when using REST
 An http PUT happens to : http://yoursite/Account/12345
 
-The router sees that rest is enabled on the account controller and calls the account/put method.
+The router sees that rest is enabled on the Account controller at Account->rest and calls the Account/putAction method.
 
 The put method then ensures that the person is logged in, validates the data, gets the repository and updates the object in the repository, and returns an affermative response.
 
