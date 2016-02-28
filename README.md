@@ -15,7 +15,7 @@ I think that everyone has their own idea of simple, this is designed for a proje
 * phpunit will be used in examples to run tests.
 * Easy to debug from end to end. I want to hit very little code before hitting the custom logic in the controller.
 * A handful of common simple objects that you can optionally use (Session, Log, Request, Response)
-* To implement the example project I am building I will look into using the controller with REST verbs, though I'm currently unsure of how I plan to implement it.
+* As I am using this framework to implement a small example somewhere else one requirement of that example is to use REST verbs, so they will be handled by the controllers.
 
 ## Example flow when using this framework
 An http POST happens: http://yoursite/Account/save
