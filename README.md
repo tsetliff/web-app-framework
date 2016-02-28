@@ -11,8 +11,7 @@ I think that everyone has their own idea of simple, this is designed for a proje
 * Di/Configuration autocompletes in PhpStorm 10+
 * PSR 2 compliant
 * Di/Configuration both work the same way, and can be configured per environment.
-* Possibly no external libraries for the framework itself though I will be giving installation instructions with composer.
-* phpunit will be used in examples to run tests.
+* Very few dependencies I will use phpunit to run example tests but not as part of this project
 * Easy to debug from end to end. I want to hit very little code before hitting the custom logic in the controller.
 * A handful of common simple objects that you can optionally use (Session, Log, Request, Response)
 * As I am using this framework to implement a small example somewhere else one requirement of that example is to use REST verbs, so they will be handled by the controllers.
@@ -41,11 +40,8 @@ The router sees that rest is enabled on the Account controller at Account->rest 
 
 The put method then ensures that the person is logged in, validates the data, gets the repository and updates the object in the repository, and returns an affermative response.
 
-## Installation With Composer
-Since composer is an easy way to pull in additional libraries you will need for your project I'm going to just explain how to install this project with composer.
-
-## Installing By Hand
-I recommend learning about all of the stuff composer has to offer as many libraries to make your life easier can be installed this way but if you still don't want composer these will be the setup instructions.
+## Installation
+Nothing fancy right now, you just copy this into your project as a template, update a few things, and start writing code.
 
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
