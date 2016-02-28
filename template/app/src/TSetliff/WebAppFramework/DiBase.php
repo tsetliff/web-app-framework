@@ -1,7 +1,10 @@
 <?php
+/**
+ * To keep the Di class clean, the main functionality that is extended is stored in this class.
+ *
+ * Do not declare any dependencies here.
+ */
 namespace TSetliff\WebAppFramework;
-
-use Exception;
 
 class DiBase
 {
@@ -19,26 +22,25 @@ class DiBase
     // This is how to get the built in classes from the base object
     //
 
+    /**
+     * @return Request
+     */
     public function getRequest()
     {
-        return new Request();
-    }
-
-    public function getResponse()
-    {
-        return new Response();
+        return $this->getSingleton('Request', function() {
+            return new Request();
+        });
     }
 
     /**
-     * If you want to use twig or something you can override this and return that instead
-     *
-     * @return PhpTemplateWrapper
+     * @return Response
      */
-    public function getTemplateWrapper()
+    public function getResponse()
     {
-        return new PhpTemplateWrapper();
+        return $this->getSingleton('Response', function() {
+            return new Response();
+        });
     }
-
 
     //
     // Continue with more DI framework code
@@ -73,8 +75,8 @@ class DiBase
     /**
      * @param $name
      * @param $callback
+     *
      * @return mixed
-     * @throws Exception If unable to find singleton and no callback to create it.
      */
     protected function getSingleton($name, $callback)
     {

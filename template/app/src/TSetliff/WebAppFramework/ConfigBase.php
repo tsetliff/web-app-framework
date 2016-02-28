@@ -1,12 +1,11 @@
 <?php
+/**
+ * To keep the Config class clean, the main functionality that is extended is stored in this class.
+ *
+ * Do not declare any configuration here
+ */
 namespace TSetliff\WebAppFramework;
 
-/**
- * Created by PhpStorm.
- * User: Tom
- * Date: 2/28/2016
- * Time: 2:36 AM
- */
 class ConfigBase
 {
     public static $instance;

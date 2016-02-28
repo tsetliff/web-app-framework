@@ -1,35 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Tom
- * Date: 2/28/2016
- * Time: 12:52 PM
- */
-
 namespace TSetliff\WebAppFramework;
 
+class Response {
+    protected $errors = [];
+    protected $messages = [];
 
-class Response
-{
-    private $errors = [];
-    private $messages = [];
-    /**
-     * @var TemplateWrapper
-     */
-    private $templateWrapper;
-
-    /**
-     * Response constructor.
-     * @param TemplateWrapper|null $templateWrapper
-     */
-    public function __construct(TemplateWrapper $templateWrapper = null)
+    public function __construct()
     {
         if (isset($_REQUEST['errors'])) {
             foreach ($_REQUEST['errors'] as $errorMsg) {
                 $this->addError($errorMsg);
             }
         }
-        $this->templateWrapper = $templateWrapper;
     }
 
     public function hasErrors()
@@ -42,24 +24,17 @@ class Response
         $this->errors[] = $msg;
     }
 
-    public function addHappyMessage($msg)
+    public function addMessage($msg)
     {
         $this->messages[] = $msg;
     }
 
     /**
-     * Add the results of a rendered twig template to the output
-     *
-     * @param $template
-     * @param array $params
+     * Return given content to output
+     * @param string $content
      */
-    public function returnTemplate($template, $params = []) {
-        $params['lastRequest'] = $_REQUEST;
-        $params['errors'] = $this->errors;
-        $params['messages'] = $this->messages;
-
-        echo((new TwigWrapper())->render($template, $params));
-        exit(0);
+    public function returnContent($content) {
+        echo($content);
     }
 
     /**
