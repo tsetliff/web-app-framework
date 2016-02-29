@@ -13,5 +13,10 @@ use TSetliff\WebAppFramework\ControllerBase;
 
 class DefaultController extends ControllerBase
 {
-
+    public function homeAction()
+    {
+        // variables will continue on into the template
+        $name = $this->request->get('name');
+        require_once(APP_LOCATION . '/templates/helloWorld.php');
+    }
 }
