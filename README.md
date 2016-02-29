@@ -1,10 +1,10 @@
 # Web Application Framework
 A tiny PHP web application framework.
 
-I had some issues with other frameworks, so this was just intended to be a demo of implemented solutions.  A few other people and I are each writing our own minimalist solution to building a simple web apps just for comparison.
+I had some issues with other frameworks, so this was just intended to be a demo of implemented solutions.  A few other people and I are each writing our own minimalist web app solution just for the exercize of having done so.
 
 ## Keeping it simple
-I think that everyone has their own idea of simple.  In reality simple tends to be what we know or what helps us acomplish our goals with as little work as possible.  In this case I want to accomplish the design goals under "what this framework has", so if you like those goals then this is the shortest path I could find to those features.
+I think that everyone has their own idea of simple.  In this case I want to accomplish the design goals under "what this framework has", so if you like those goals then this is the shortest path I could find to those features.  If you don't need those features then there are simpler options.
 
 ## What this framework has - Design goals
 * MVC style framework.
@@ -14,13 +14,15 @@ I think that everyone has their own idea of simple.  In reality simple tends to 
 * PHP 6.4 and PHP 7 compatible.
 * Easy to debug from end to end. I want to hit very little code from the request to the custom logic in the controller.
 * A handful of common simple objects that you can optionally use, I'll decide as I go.
-* REST verbs route.
+* REST verbs are identified and handled in the router to make it easy to GET/PUT/POST...
 
 ## What this framework does not have
-* Dependencies outside of core PHP.
+* Dependencies outside of core PHP.  If I add anything however it will be composer so you are ready to import libraries.
 * Configuration file parsing.
-* "Magic" as that really just means "Have fun figuring out what I did".  Assuming you have done some PHP I want you to easily understand what your debugger walks through, no magic.  If you don't understand something feel free to send me a message.
+* "Magic" as that really just means "Have fun figuring out what I did".  Assuming you have done some PHP I want you to easily understand what your debugger walks through.
+* Annotations outside of documentation.  It might be a nifty way to extend the language but it isn't actually part of the language and creates unnessisary framework complexity IMO.
 * No internal package system though you can add composer. The idea is that if your project becomes that big you should probably use something like service oriented architecture to split it up anyway. You can however easily pull in libraries with composer.
+* Automatic dependency injection.  This avoids automatic reading of constructors and making the code path more complicated.
 * A bunch of other stuff that is common to frameworks, I did this as a quick side project but if you write something extremely light weight I'll consider a pull request.  I may also add additional objects as I feel that I need to.
 
 
@@ -52,6 +54,8 @@ The put method then ensures that the person is logged in, validates the data, ge
 Setup your environment for developing in.  I've installed Centos 7 in a VM.
 
 Install php 6.4+ or php 7 (Unless you want to be brave and test something I haven't) feel free to install your persistance mechanism, I'm also installing mysql and mysql-server.
+
+Make sure you can bring up the default web page for your installation.
 
 Since this project is designed to take advantage of autocomplete, you might as well use a modern IDE.  I'm going to do this in PHPStorm 10 and give the instructions for getting up and running in that IDE.
 
@@ -118,10 +122,11 @@ If you want to have super secret stuff in your production file just check if the
 
 But can't this be done with a single file with switch statements in it?  I couldn't find a way that would autocomplete (associative array is out), be global without saying global everywhere (again associative array is out), be overridden by different environments(defines were out), not require external file parsing (.ini files were out but then again they have the other issues too).  So in the end I decided this worked the best.  If you can figure this out please let me know.
 
-
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
 
 ## But I want to use composer
 Just init composer in the app directory, You can uncomment the line in app/autoloader.php that points to composers autoloader.
 
+## Other issues
+Everything says it isn't found?  This could be because this project relies on the mod_rewrite command in .htaccess.  Your setup needs to either allow .htaccess or you should copy the contents of that file to your normal Apache configuration.
