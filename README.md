@@ -12,12 +12,13 @@ I think that everyone has their own idea of simple.  In reality simple tends to 
 * PSR-2 compliant
 * Per environment configuration.
 * PHP 6.4 and PHP 7 compatible.
-* No dependencies outside of core PHP.
 * Easy to debug from end to end. I want to hit very little code from the request to the custom logic in the controller.
 * A handful of common simple objects that you can optionally use, I'll decide as I go.
 * REST verbs route.
 
 ## What this framework does not have
+* Dependencies outside of core PHP.
+* Configuration file parsing.
 * "Magic" as that really just means "Have fun figuring out what I did".  Assuming you have done some PHP I want you to easily understand what your debugger walks through, no magic.  If you don't understand something feel free to send me a message.
 * No internal package system though you can add composer. The idea is that if your project becomes that big you should probably use something like service oriented architecture to split it up anyway. You can however easily pull in libraries with composer.
 * A bunch of other stuff that is common to frameworks, I did this as a quick side project but if you write something extremely light weight I'll consider a pull request.  I may also add additional objects as I feel that I need to.
@@ -112,6 +113,11 @@ class WidgetController
 
 ## How does the configuraton system work?
 It works almost exactly like the DI system but uses properties instead of methods.  If you want to confgure something more complicated you can use methods as well just like the DI system.
+
+If you want to have super secret stuff in your production file just check if the production file exists somewhere else with ConfigProd in it and load it. Once loaded the autoloader won't load the default ConfigProd.php file.
+
+But can't this be done with a single file with switch statements in it?  I couldn't find a way that would autocomplete (associative array is out), be global without saying global everywhere (again associative array is out), be overridden by different environments(defines were out), not require external file parsing (.ini files were out but then again they have the other issues too).  So in the end I decided this worked the best.  If you can figure this out please let me know.
+
 
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
