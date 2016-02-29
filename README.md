@@ -1,7 +1,7 @@
 # Web Application Framework
 A tiny PHP web application framework.
 
-I had some issues with other frameworks, so this was just intended to be a demo of implemented solutions.  I am also trying small projects on other frameworks for work and we decided that one of the things we would each try would be to implement our own.
+I had some issues with other frameworks, so this was just intended to be a demo of implemented solutions.  A few other people and I are each writing our own minimalist solution to building a simple web apps just for comparison.
 
 ## Keeping it simple
 I think that everyone has their own idea of simple.  In reality simple tends to be what we know or what helps us acomplish our goals with as little work as possible.  In this case I want to accomplish the design goals under "what this framework has", so if you like those goals then this is the shortest path I could find to those features.
