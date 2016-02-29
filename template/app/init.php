@@ -1,8 +1,6 @@
 <?php
 require 'errorHandler.php';
 
-require 'config.php';
-
 // Uncomment if using the composer auto loader
 // require 'vendor/autoload.php';
 
