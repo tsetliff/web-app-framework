@@ -110,6 +110,9 @@ class WidgetController
 }
 ```
 
+## How does the configuraton system work?
+It works almost exactly like the DI system but uses properties instead of methods.  If you want to confgure something more complicated you can use methods as well just like the DI system.
+
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
 
