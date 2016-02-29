@@ -1,20 +1,27 @@
 # Web Application Framework
 A tiny PHP web application framework.
 
-I'm mostly doing this as an exercize in picking through some decisions other frameworks have made.
+I had some issues with other frameworks, so this was just intended to be a demo of implemented solutions.  I am also trying small projects on other frameworks for work and we decided that one of the things we would each try would be to implement our own.
 
 ## Keeping it simple
-I think that everyone has their own idea of simple, this is designed for a project that you want to be able to easily test with phpunit and dependency injection but isn't so large that you need to split your project into multiple packages within the project.  The idea is that if your project becomes that big you should probably use something like service oriented architecture to split it up anyway.
+I think that everyone has their own idea of simple.  In reality simple tends to be what we know or what helps us acomplish our goals with as little work as possible.  In this case I want to accomplish the design goals under "what this framework has", so if you like those goals then this is the shortest path I could find to those features.
 
-## Design goals
+## What this framework has - Design goals
 * MVC style framework.
-* Di/Configuration autocompletes in PhpStorm 10+
-* PSR 2 compliant
-* Di/Configuration both work the same way, and can be configured per environment.
-* Very few dependencies I will use phpunit to run example tests but not as part of this project
-* Easy to debug from end to end. I want to hit very little code before hitting the custom logic in the controller.
-* A handful of common simple objects that you can optionally use (Session, Log, Request, Response)
-* As I am using this framework to implement a small example somewhere else one requirement of that example is to use REST verbs, so they will be handled by the controllers.
+* Dependency injection/Configuration autocompletes in PhpStorm 10+
+* PSR-2 compliant
+* Per environment configuration.
+* PHP 6.4 and PHP 7 compatible.
+* No dependencies outside of core PHP.
+* Easy to debug from end to end. I want to hit very little code from the request to the custom logic in the controller.
+* A handful of common simple objects that you can optionally use, I'll decide as I go.
+* REST verbs route.
+
+## What this framework does not have
+* "Magic" as that really just means "Have fun figuring out what I did".  Assuming you have done some PHP I want you to easily understand what your debugger walks through, no magic.  If you don't understand something feel free to send me a message.
+* No internal package system though you can add composer. The idea is that if your project becomes that big you should probably use something like service oriented architecture to split it up anyway. You can however easily pull in libraries with composer.
+* A bunch of other stuff that is common to frameworks, I did this as a quick side project but if you write something extremely light weight I'll consider a pull request.  I may also add additional objects as I feel that I need to.
+
 
 ## Example flow when using this framework
 An http POST happens: http://yoursite/Account/save
@@ -69,5 +76,43 @@ Edit the configuration options in public_html/config.php to match where you put 
 
 You should have a working hello world example.
 
+## How does this DI system work?
+So the idea is you set up all of the different things you need to inject in your own Di class that extends DiBase that is included with the framework. You then create one additional class to extend that class for each environment such as Dev/Prod/Testing.
+Then you set your environment in the config.php file.
+
+In your Dev environment the system creates an instance of your DiDev class, and sets it as a singleton on the DiBase object.  Throughout your project when you say Di::instance()->getWhateverComponent() you are actually calling DiDev so that it can optionally override any of your methods in your Di class but autocomplete still works fine because everything is declared in your Di class.
+
+A common example is that you want a database PDO object that you can use in your widget repository.  So in your Di class you create the method:
+```
+public function getDatabaseConnection()
+{
+  new PDO...
+}
+public function getWidgetRepository()
+{
+  new WidgetRepository($this->getDatabaseConnection());
+}
+```
+
+By passing the database connection into your widget repository instead of creating an instance in the repository you are free to pack a mock connection in when writing tests so that repository tests don't need to access your database.
+
+In your controller you then just have something like this:
+```
+class WidgetController
+{
+  public function getAction()
+  {
+    $widgetId = $this->request->getRestParameter(0);
+    // Place any verification of widget ID and session permissions here.
+    $widget = Di::instance()->getWidgetRepository()->getWidget($widgetId);
+    return $this->response->returnJson($widget->toArray());
+  }
+}
+```
+
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
+
+## But I want to use composer
+Just init composer in the app directory, You can uncomment the line in app/autoloader.php that points to composers autoloader.
+
