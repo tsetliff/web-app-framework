@@ -61,8 +61,13 @@ In PHPStorm I set the new server as the default and set the autoload option on t
 
 Check to make sure the files ended up on your test VM where you expected them to be.
 
-Edit the configuration options in app/config.php to match where you put everything.
+Rename the directory src/YourName/YourProject to be your name or your organizations name for your namespace root followed by the name of this project.  This may feel like a lot of directories but it keeps it PSR-0 complient for when you want to package your project or use it with another PSR-0 compliant autoloader.
 
+Then replace all the instances of YourName/YourProject in the template with the new values... what can I say the result won't have any magic since these are the example classes for you to edit, not something in the framework namespace.
+
+Edit the configuration options in public_html/config.php to match where you put everything.
+
+You should have a working hello world example.
 
 ## Unit Testing
 In general you just put tests in the testing directory with the same structure as the classes you are testing in the classes directory.  The environment is Testing and so the associated configuration and dependency injection classes will be loaded.
