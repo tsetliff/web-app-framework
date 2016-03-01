@@ -11,7 +11,7 @@ I think that everyone has their own idea of simple.  In this case I want to acco
 * Dependency injection/Configuration autocompletes in PhpStorm 10+
 * PSR-2 compliant
 * Per environment configuration.
-* PHP 6.4 and PHP 7 compatible.
+* PHP 5.4 and PHP 7 compatible.
 * Easy to debug from end to end. I want to hit very little code from the request to the custom logic in the controller.
 * A handful of common simple objects that you can optionally use, I'll decide as I go.
 * REST verbs are identified and handled in the router to make it easy to GET/PUT/POST...
@@ -53,7 +53,7 @@ The put method then ensures that the person is logged in, validates the data, ge
 ## Install/Create a project
 Setup your environment for developing in.  I've installed Centos 7 in a VM.
 
-Install php 6.4+ or php 7 (Unless you want to be brave and test something I haven't) feel free to install your persistance mechanism, I'm also installing mysql and mysql-server.
+Install php 5.4+ or php 7 (Unless you want to be brave and test something I haven't) feel free to install your persistance mechanism, I'm also installing mysql and mysql-server.
 
 Make sure you can bring up the default web page for your installation.
 
