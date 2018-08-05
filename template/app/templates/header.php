@@ -10,3 +10,4 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+<?php $this->insertTemplate('users/navBar.php'); ?>

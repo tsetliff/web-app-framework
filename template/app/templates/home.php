@@ -1,5 +1,4 @@
 <?php $this->insertTemplate('header.php'); ?>
-<?php $this->insertTemplate('users/navBar.php'); ?>
 <div class="container">
     <h1>Hello <?php echo(($name) ? $name : 'world'); ?>!</h1>
     <form action="" method="post">
