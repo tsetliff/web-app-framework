@@ -1,7 +1,0 @@
-The class here is chosen by the environment variable set in config.php in the root app directory.  It will also
-assign that to be the class that is returned when you call Di::instance() within your controller classes.
-
-Every method should be defined on the Di class and then over ridden in an environment specific class.
-
-This allows you to return different objects based on if it is production or development for example if you use a
-different logger like MonoLog in production.

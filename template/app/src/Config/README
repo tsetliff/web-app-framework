@@ -1,0 +1,4 @@
+The configuration class is chosen by the environment variable in config.php in the app directory.  Throughout
+your project however you just call Config::instance()->parameterName.  This allows for auto complete in the IDE.
+Every parameter should be defined in Config and other environment dependent changes should be made in ConfigDev,
+ConfigProd etc.

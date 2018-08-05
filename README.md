@@ -1,6 +1,8 @@
 # Web Application Framework
 A tiny PHP web application framework.
 
+# NOTE: THIS IS A TOY PROJECT, DO NOT USE IT!
+
 I had some issues with other frameworks, so this was just intended to be a demo of implemented solutions.  A few other people and I are each writing our own minimalist web app solution just for the exercize of having done so.
 
 ## Keeping it simple
@@ -73,10 +75,6 @@ In PHPStorm I set the new server as the default and set the autoload option on t
 
 Check to make sure the files ended up on your test VM where you expected them to be.
 
-Rename the directory src/YourName/YourProject to be your name or your organizations name for your namespace root followed by the name of this project.  This may feel like a lot of directories but it keeps it PSR-0 complient for when you want to package your project or use it with another PSR-0 compliant autoloader.
-
-Then replace all the instances of YourName/YourProject in the template with the new values... what can I say the result won't have any magic since these are the example classes for you to edit, not something in the framework namespace.
-
 Edit the configuration options in public_html/config.php to match where you put everything.
 
 You should have a working hello world example.
@@ -85,7 +83,7 @@ You should have a working hello world example.
 So the idea is you set up all of the different things you need to inject in your own Di class that extends DiBase that is included with the framework. You then create one additional class to extend that class for each environment such as Dev/Prod/Testing.
 Then you set your environment in the config.php file.
 
-In your Dev environment the system creates an instance of your DiDev class, and sets it as a singleton on the DiBase object.  Throughout your project when you say Di::instance()->getWhateverComponent() you are actually calling DiDev so that it can optionally override any of your methods in your Di class but autocomplete still works fine because everything is declared in your Di class.
+In your Dev environment the system creates an instance of your DiDev class, and sets it as a singleton on the DiBase object.  Throughout your project when you say Di::getWhateverComponent() you are actually calling DiDev so that it can optionally override any of your methods in your Di class but autocomplete still works fine because everything is declared in your Di class.
 
 A common example is that you want a database PDO object that you can use in your widget repository.  So in your Di class you create the method:
 ```

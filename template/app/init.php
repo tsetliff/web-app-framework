@@ -1,4 +1,12 @@
 <?php
+/**
+ * This is the general init file for all things within this framework.  It is for web/console/whatever so do not put
+ * things related to the context in here.
+ *
+ * Place those things in initWeb.php and initConsole.php
+ */
+
+require_once('config.php');
 require 'errorHandler.php';
 
 // Uncomment if using the composer auto loader
@@ -8,11 +16,9 @@ require 'errorHandler.php';
 require 'autoload.php';
 
 // Load the config system.
-$configName = PROJECT_NAMESPACE . '\Config\Config' . ENVIRONMENT;
+$configName = '\Config\Config' . ENVIRONMENT;
 $configName::setInstanceForEnvironment();
 
 // Setup dependency injection container based on environment
-$diName = PROJECT_NAMESPACE . '\Di\Di' . ENVIRONMENT;
+$diName = '\Di\Di' . ENVIRONMENT;
 $diName::setInstanceForEnvironment();
-
-session_start();
