@@ -34,17 +34,17 @@ class Template
      */
     public function insertTemplate($templateFileName)
     {
-        require(APP_LOCATION . '/templates/' . $templateFileName);
-    }
-
-    public function render()
-    {
         // Add normal escaped variables to the template
         foreach ($this->rawVariables as $name => $value) {
             // Yes I want to explode out the variables here by name
             $$name = htmlentities($value);
         }
 
-        require(APP_LOCATION . '/templates/' . $this->phpTemplateFile);
+        require(APP_LOCATION . '/templates/' . $templateFileName);
+    }
+
+    public function render()
+    {
+        $this->insertTemplate($this->phpTemplateFile);
     }
 }
