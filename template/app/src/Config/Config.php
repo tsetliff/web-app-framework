@@ -20,4 +20,7 @@ class Config extends ConfigBase
     public $databaseUsername = 'test';
     public $databasePassword = 'test';
     public $databaseConsoleCommand = 'mysql'; // Where to pipe mysql migration scripts to
+
+    // Writable file store
+    public $fileStore = APP_LOCATION . '/storage';
 }
