@@ -29,6 +29,16 @@ class Response {
         $this->messages[] = $msg;
     }
 
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
     /**
      * Return given content to output
      * @param string $content

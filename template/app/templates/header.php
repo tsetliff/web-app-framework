@@ -1,3 +1,6 @@
+<?php
+use Di\Di;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,4 +13,11 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<?php $this->insertTemplate('users/navBar.php'); ?>
+<?php
+$this->insertTemplate('users/navBar.php'); ?>
+<?php foreach (Di::getResponse()->getErrors() as $errorMessage) { ?>
+<div class="alert alert-danger" role="alert"><?php echo $errorMessage; ?></div>
+<?php } ?>
+<?php foreach (Di::getResponse()->getMessages() as $message) { ?>
+<div class="alert alert-success" role="alert"><?php echo $message; ?></div>
+<?php } ?>

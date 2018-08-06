@@ -18,7 +18,14 @@ class HomeController extends ControllerBase
     public function homeAction()
     {
         $template = new Template('home.php');
-        $template->setVariable('name', $this->request->get('name', ''));
+        $name = $this->request->get('name', '');
+
+        if ($name) {
+            $this->response->addMessage("Example of a basic message to $name");
+            $this->response->addError("Example of an error");
+        }
+
+        $template->setVariable('name', $name);
         $template->render();
     }
 }
